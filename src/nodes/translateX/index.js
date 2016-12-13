@@ -34,7 +34,7 @@ export let spec = {
   outputs: {
     paths: {name: 'paths', type: 'Array<Path>'},
   },
-  documentation: 'Provides a slkder interface for translating path values.',
+  documentation: 'Provides a slider interface for translating path values.',
   version: '0.0.1',
   uid: 'jxg/paths/translateX',
 }

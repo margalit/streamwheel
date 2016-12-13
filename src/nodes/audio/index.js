@@ -2,7 +2,6 @@
 import AudioComponent from './AudioComponent'
 
 type State = {
-  url: string,
   isPlaying: boolean,
   duration: number,
   frequencyData: Array<number>,
@@ -11,7 +10,7 @@ type State = {
 type Inputs = {
 }
 
-function implementation(state: State, input: Inputs): Array<Path> {
+function implementation(state: State, input: Inputs) {
   return {
     isPlaying: state.isPlaying,
     duration: state.duration,
@@ -26,7 +25,9 @@ export let spec = {
   implementation,
   component: AudioComponent,
   state: {
-    file: null,
+    isPlaying: false,
+    duration: 0,
+    frequencyData: [],
   },
   inputs: {
   },

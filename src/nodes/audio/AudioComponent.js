@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 
 class AudioComponent extends Component {
   props: {
-    state: {url: string, isPlaying: boolean},
-    inputs: {},
-    updateState: (state: {url: string, isPlaying: boolean}) => void,
+    state: {isPlaying: boolean},
+    inputs: {src: string},
+    updateState: (state: {isPlaying: boolean}) => void,
   }
 
   componentDidMount() {
@@ -29,11 +29,6 @@ class AudioComponent extends Component {
         [key]: value,
       })
     }
-  }
-
-  _handleUpdateFileChange(event: SyntheticInputEvent): void {
-    const url = URL.createObjectURL(event.target.files[0])
-    this._handleUpdateStateChange('url')(url)
   }
 
   _setupAudioPlayerHandlers() {
@@ -72,19 +67,10 @@ class AudioComponent extends Component {
 
   render(): React$Element<*> {
     const {
-      url,
-      isPlaying,
-    } = this.props.state
+      src,
+    } = this.props.inputs
     return (
-      <div>
-        <input
-          type="file"
-          onChange={this._handleUpdateFileChange.bind(this)}
-        />
-        <div>
-          <audio ref="audioPlayer" preload="auto" controls src={url} />
-        </div>
-      </div>
+      <audio ref="audioPlayer" preload="auto" controls src={src} />
     )
   }
 }
